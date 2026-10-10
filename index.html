@@ -1,0 +1,479 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="theme-color" content="#fff5f8">
+
+  <meta name="description" content="The Conversation Club — thoughtful questions, fun conversations, and meaningful connections.">
+
+  <title>The Conversation Club</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- The complete website design -->
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Icons -->
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+</head>
+
+<body>
+
+  <header class="site-header">
+
+    <a class="brand" href="#home" aria-label="The Conversation Club home">
+
+      <span class="brand-icon">♡</span>
+
+      <span>The Conversation Club</span>
+
+    </a>
+
+    <button
+
+      class="menu-toggle"
+
+      id="menuToggle"
+
+      aria-label="Toggle navigation"
+
+      aria-expanded="false"
+
+      aria-controls="mainNav"
+
+      type="button"
+
+    >☰</button>
+
+    <nav class="main-nav" id="mainNav">
+
+      <a href="#home" class="nav-link active">Home</a>
+
+      <a href="#categories" class="nav-link">Categories</a>
+
+      <a href="#favorites" class="nav-link">Favorites <span id="navFavoritesCount">0</span></a>
+
+      <a href="#saved" class="nav-link">My Answers</a>
+
+    </nav>
+
+  </header>
+
+  <main>
+
+    <!-- HOME / INTRODUCTION -->
+
+    <section class="hero section" id="home">
+
+      <div class="hero-decoration decoration-one">✿</div>
+
+      <div class="hero-decoration decoration-two">✧</div>
+
+      <p class="eyebrow">A LITTLE SPACE FOR BIG CONVERSATIONS</p>
+
+      <h1>Let's talk about<br><span>something real.</span></h1>
+
+      <p class="hero-description">
+
+        Thoughtful questions, unexpected stories, and little moments
+
+        that bring us closer. Pick a question and see where the conversation goes.
+
+      </p>
+
+      <a class="primary-button hero-button" href="#play">
+
+        Start a conversation <span aria-hidden="true">→</span>
+
+      </a>
+
+      <div class="hero-note">
+
+        <span>♡</span> For one person, two people, or your whole circle
+
+      </div>
+
+    </section>
+
+    <!-- GAME -->
+
+    <section class="section game-section" id="play">
+
+      <div class="section-heading">
+
+        <p class="eyebrow">YOUR MOMENT STARTS HERE</p>
+
+        <h2>One question at a time</h2>
+
+        <p>Choose your vibe, then let the conversation unfold.</p>
+
+      </div>
+
+      <div class="game-controls">
+
+        <div class="control-group">
+
+          <label for="modeSelect">Who are you talking with?</label>
+
+          <select id="modeSelect">
+
+            <option value="myself">Just me</option>
+
+            <option value="friends">Friends</option>
+
+            <option value="group">A group</option>
+
+            <option value="partner">My partner</option>
+
+          </select>
+
+        </div>
+
+        <div class="control-group">
+
+          <label for="depthFilter">Question depth</label>
+
+          <select id="depthFilter">
+
+            <option value="all">All levels</option>
+
+            <option value="light">Light</option>
+
+            <option value="medium">A little deeper</option>
+
+            <option value="deep">Deep</option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+      <div class="question-card" id="questionCard">
+
+        <div class="question-card-top">
+
+          <span class="category-pill" id="questionCategory">ICEBREAKERS</span>
+
+          <span class="question-number" id="questionNumber">Ready when you are ♡</span>
+
+        </div>
+
+        <div class="question-content">
+
+          <span class="quote-mark" aria-hidden="true">“</span>
+
+          <h3 id="questionText">What is something small that always makes your day better?</h3>
+
+          <p class="question-hint" id="questionHint">There is no right or wrong answer.</p>
+
+        </div>
+
+        <div class="follow-up-box" id="followUpBox" hidden>
+
+          <p class="follow-up-label">KEEP THE CONVERSATION GOING</p>
+
+          <p id="followUpText"></p>
+
+        </div>
+
+        <div class="question-actions">
+
+          <button class="icon-button" id="favoriteButton" type="button" aria-label="Add to favorites" title="Add to favorites">
+
+            ♡ <span>Favorite</span>
+
+          </button>
+
+          <button class="secondary-button" id="showFollowUpButton" type="button">
+
+            Ask a follow-up
+
+          </button>
+
+          <button class="primary-button" id="newQuestionButton" type="button">
+
+            New question <span aria-hidden="true">↗</span>
+
+          </button>
+
+        </div>
+
+        <div class="round-progress">
+
+          <div class="progress-track">
+
+            <div class="progress-fill" id="progressFill"></div>
+
+          </div>
+
+          <div class="progress-labels">
+
+            <span><strong id="remainingCount">300</strong> questions left this round</span>
+
+            <span><strong id="favoritesCount">0</strong> favorites</span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <p class="round-note" id="roundNote" aria-live="polite">
+
+        Take your time. Good conversations don't need to be rushed.
+
+      </p>
+
+    </section>
+
+    <!-- CATEGORIES -->
+
+    <section class="section categories-section" id="categories">
+
+      <div class="section-heading">
+
+        <p class="eyebrow">FIND YOUR KIND OF CONVERSATION</p>
+
+        <h2>Choose your mood</h2>
+
+        <p>From silly little questions to the things we rarely say out loud.</p>
+
+      </div>
+
+      <div class="category-grid">
+
+        <button class="category-card category-icebreakers" type="button" data-category="icebreaker">
+
+          <span class="category-emoji">☀️</span>
+
+          <span class="category-card-title">Icebreakers</span>
+
+          <span class="category-card-description">Easy ways to get talking</span>
+
+          <span class="category-arrow">↗</span>
+
+        </button>
+
+        <button class="category-card category-fun" type="button" data-category="fun">
+
+          <span class="category-emoji">🎀</span>
+
+          <span class="category-card-title">Fun</span>
+
+          <span class="category-card-description">Silly, random, unexpected</span>
+
+          <span class="category-arrow">↗</span>
+
+        </button>
+
+        <button class="category-card category-deep" type="button" data-category="deep">
+
+          <span class="category-emoji">🌙</span>
+
+          <span class="category-card-title">Deep</span>
+
+          <span class="category-card-description">Thoughts beneath the surface</span>
+
+          <span class="category-arrow">↗</span>
+
+        </button>
+
+        <button class="category-card category-dreams" type="button" data-category="dreams">
+
+          <span class="category-emoji">✨</span>
+
+          <span class="category-card-title">Dreams</span>
+
+          <span class="category-card-description">Hopes, plans, possibilities</span>
+
+          <span class="category-arrow">↗</span>
+
+        </button>
+
+        <button class="category-card category-memories" type="button" data-category="memories">
+
+          <span class="category-emoji">📷</span>
+
+          <span class="category-card-title">Memories</span>
+
+          <span class="category-card-description">Little pieces of your story</span>
+
+          <span class="category-arrow">↗</span>
+
+        </button>
+
+        <button class="category-card category-relationships" type="button" data-category="relationships">
+
+          <span class="category-emoji">💌</span>
+
+          <span class="category-card-title">Relationships</span>
+
+          <span class="category-card-description">Love, friendship, connection</span>
+
+          <span class="category-arrow">↗</span>
+
+        </button>
+
+        <button class="category-card category-life" type="button" data-category="life">
+
+          <span class="category-emoji">🌷</span>
+
+          <span class="category-card-title">Life</span>
+
+          <span class="category-card-description">Lessons, choices, growing up</span>
+
+          <span class="category-arrow">↗</span>
+
+        </button>
+
+        <button class="category-card category-all" type="button" data-category="all">
+
+          <span class="category-emoji">🦋</span>
+
+          <span class="category-card-title">Surprise me</span>
+
+          <span class="category-card-description">A little bit of everything</span>
+
+          <span class="category-arrow">↗</span>
+
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- FAVORITES -->
+
+    <section class="section collection-section" id="favorites">
+
+      <div class="collection-heading">
+
+        <div>
+
+          <p class="eyebrow">YOUR LITTLE COLLECTION</p>
+
+          <h2>Favorite questions <span class="heading-heart">♡</span></h2>
+
+          <p>Keep the questions you want to return to.</p>
+
+        </div>
+
+        <span class="collection-count" id="favoritesSectionCount">0 saved</span>
+
+      </div>
+
+      <div class="empty-state" id="favoritesEmpty">
+
+        <span class="empty-icon">♡</span>
+
+        <h3>Your favorites will live here</h3>
+
+        <p>Tap Favorite on any question to save it to this collection.</p>
+
+      </div>
+
+      <div class="saved-list" id="favoritesList"></div>
+
+    </section>
+
+    <!-- SAVED ANSWERS -->
+
+    <section class="section collection-section saved-section" id="saved">
+
+      <div class="collection-heading">
+
+        <div>
+
+          <p class="eyebrow">A JOURNAL OF YOUR THOUGHTS</p>
+
+          <h2>My answers <span class="heading-star">✧</span></h2>
+
+          <p>Save your thoughts and come back to them whenever you like.</p>
+
+        </div>
+
+        <span class="collection-count" id="answersCount">0 saved</span>
+
+      </div>
+
+      <div class="answer-editor">
+
+        <label for="answerInput">Your answer to the current question</label>
+
+        <textarea id="answerInput" rows="4" placeholder="Write whatever comes to mind..."></textarea>
+
+        <div class="answer-editor-actions">
+
+          <button class="secondary-button" id="clearAnswerButton" type="button">Clear answer</button>
+
+          <button class="primary-button" id="saveAnswerButton" type="button">Save my answer ♡</button>
+
+        </div>
+
+      </div>
+
+      <div class="empty-state" id="answersEmpty">
+
+        <span class="empty-icon">✎</span>
+
+        <h3>Your thoughts, kept safe here</h3>
+
+        <p>Write an answer above and save it to start your collection.</p>
+
+      </div>
+
+      <div class="saved-list" id="savedAnswersList"></div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <section class="closing-note">
+
+      <span class="closing-flower">✿</span>
+
+      <h2>Every good conversation<br>starts somewhere.</h2>
+
+      <p>Be curious. Be kind. Let people surprise you.</p>
+
+      <a href="#play" class="text-link">Find your next question ↑</a>
+
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+
+    <a class="footer-brand" href="#home">The Conversation Club ♡</a>
+
+    <p>Made for meaningful moments and the people who make them.</p>
+
+    <span>Take what you need. Skip anything that doesn't feel right.</span>
+
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Keep these scripts in this order: questions first, functionality second -->
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
